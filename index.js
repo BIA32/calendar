@@ -5,7 +5,7 @@ const daysEl = document.querySelector(".days");
 const monthInx = new Date().getMonth();
 const lastDay = new Date(new Date().getFullYear(), monthInx + 1, 0).getDate();
 const firstDay = new Date(new Date().getFullYear(), monthInx, 1).getDay() - 1;
-console.log(firstDay);
+
 
 const months = [
     "January",
@@ -30,14 +30,16 @@ fullDateEl.innerText = new Date().toDateString();
 let days = "";
 
 for (let i = firstDay; i>0; i--){
-    if( i === new Date().getDate()){
-        days += `<div class="today">${i}</div>`
-    }
-    days += `<div class="empty"></div>`
+        days += `<div class="empty"></div>`
 }
 
 for (let i=1; i <= lastDay; i++){
-    days += `<div>${i}</div>`
+    if ((i === new Date().getDate())) {
+        days += `<div class="today">${i}</div>`;
+    } else{
+        days += `<div>${i}</div>`
+    }
 }
 
 daysEl.innerHTML = days;
+console.log(firstDay);
